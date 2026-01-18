@@ -30,7 +30,7 @@ Admins can manage products, categories, and view orders through a simple dashboa
 ---
 
 ## 📸 Screenshots
-![Home](screenshots/home.png)  
+![Home](https://github.com/mohakmohammad/PROShoping/blob/main/screenshots/Screenshot%202026-01-15%20163539.png)  
 ![Products](screenshots/products.png)  
  
 
