@@ -1,0 +1,171 @@
+﻿@model VmHomePage
+
+<!-- ==================== Home slider ==================== -->
+<section class="p-0 layout-7">
+    <div class="slide-1 home-slider">
+
+        @foreach (var slide in Model.lstSliders)
+        {
+            <div>
+                <div class="home text-left">
+                    <img src="~/Uploads/Sliders/@slide.ImageName"
+                         alt="@slide.Title"
+                         class="bg-img blur-up lazyload">
+
+                    <div class="container-fluid custom-container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-contain">
+                                    <div>
+                                        <h2>@slide.Title</h2>
+                                        <p>@slide.Description</p>
+                                        <a href="#" class="btn btn-solid">shop now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+
+<!-- ==================== Home slider end ==================== -->
+<!-- ==================== Collection banner ==================== -->
+<section class="banner-padding banner-furniture ratio2_1">
+    <div class="container-fluid">
+        <div class="row partition4">
+
+            @foreach (var categories in Model.lstCategories)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <a href="#">
+                    <div class="collection-banner p-right text-right">
+                        <div class="img-part">
+                                <img src="~/Uploads/Categories/@categories.ImageName"
+                                 class="img-fluid blur-up lazyload bg-img">
+                        </div>
+                        <div class="contain-banner banner-4">
+                            
+                        </div>
+                    </div>
+                </a>
+            </div>
+            }
+
+          
+        </div>
+    </div>
+</section>
+<!-- ==================== Collection banner end ==================== -->
+<!-- ==================== Paragraph ==================== -->
+<div class="title1 section-t-space">
+    <h4>special offer</h4>
+    <h2 class="title-inner1">today's deal</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="product-para">
+                <p class="text-center">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==================== Paragraph end ==================== -->
+<!-- ==================== Product section ==================== -->
+<section class="pt-0 section-b-space ratio_asos">
+    <div class="container">
+        <div class="row game-product grid-products">
+
+            @foreach (var item in Model.lstAllItems)
+            {
+                <div class="product-box col-xl-2 col-lg-3 col-sm-4 col-6">
+                    <div class="img-wrapper">
+
+                        <div class="front">
+                            <a asp-controller="Items"
+                               asp-action="ItemDetails"
+                               asp-route-id="@item.ItemId">
+                                <img src="~/Uploads/Items/@item.ImageName"
+                                     class="img-fluid blur-up lazyload bg-img">
+                            </a>
+                        </div>
+
+                        <div class="cart-info cart-wrap">
+                            <a asp-controller="Order"
+                               asp-action="AddToCart"
+                               asp-route-itemId="@item.ItemId"
+                               title="Add to Cart"
+                               tabindex="0">
+                                <i class="ti-heart" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="#" data-toggle="modal" data-target="#quick-view"
+                               title="Quick View" tabindex="0">
+                                <i class="ti-search" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="compare.html" title="Compare" tabindex="0">
+                                <i class="ti-reload" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <a asp-controller="Order"
+                           asp-action="AddToCart"
+                           asp-route-itemId="@item.ItemId"
+                           class="add-button"
+                           title="Add to Cart"
+                           tabindex="0">
+                            add to cart
+                        </a>
+
+                    </div>
+
+                    <div class="product-detail">
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <h6>@item.ItemName</h6>
+                        <h4>$@item.SalesPrice</h4>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- ==================== Product section end ==================== -->
+<!-- ==================== Parallax banner ==================== -->
+<section class="p-0">
+    <div class="full-banner parallax text-center p-right">
+        <img src="~/Uploads/Items/3710.jpg"
+             alt=""
+             class="bg-img blur-up lazyload">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="banner-contain">
+                        <h2>sale</h2>
+                        <h3>fashion trends</h3>
+                        <h4>special offer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==================== Parallax banner end ==================== -->

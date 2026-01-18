@@ -1,0 +1,923 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Pro Lap Shoping API",
+    "description": "API for Pro Lap Shoping Application",
+    "contact": {
+      "name": "PROShoping Support",
+      "email": "Falsaudi@yahoo.com"
+    },
+    "license": {
+      "name": "Pro Lap Shoping License",
+      "url": "https://www.facebook.com/mohammad.alsaudi.520613/?locale=ar_AR"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Items": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "summary": "get all items from database",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TbItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TbItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TbItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Items/{id}": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "summary": "get item by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "item id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Items/GetByCategoryId/{categoryId}": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Items/Delete": {
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Setting": {
+      "get": {
+        "tags": [
+          "Setting"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TbSettings"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TbSettings"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TbSettings"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Setting"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "The data returned by the API",
+            "nullable": true
+          },
+          "errors": {
+            "description": "The errors returned by the API",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "The status code of the API response",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbBusinessInfo": {
+        "type": "object",
+        "properties": {
+          "businessInfoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "businessCardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "officePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "budget": {
+            "type": "number",
+            "format": "double"
+          },
+          "cutomerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cutomer": {
+            "$ref": "#/components/schemas/TbCustomer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbCategory": {
+        "required": [
+          "categoryName"
+        ],
+        "type": "object",
+        "properties": {
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categoryName": {
+            "type": "string"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "showInHomePage": {
+            "type": "boolean"
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tbItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbCustomer": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tbBusinessInfo": {
+            "$ref": "#/components/schemas/TbBusinessInfo"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbItem": {
+        "required": [
+          "categoryId",
+          "itemName",
+          "itemTypeId",
+          "osId",
+          "purchasePrice",
+          "ramSize",
+          "salesPrice"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemName": {
+            "type": "string"
+          },
+          "salesPrice": {
+            "maximum": 100000,
+            "minimum": 50,
+            "type": "number",
+            "format": "currency"
+          },
+          "purchasePrice": {
+            "maximum": 100000,
+            "minimum": 50,
+            "type": "number",
+            "format": "currency"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "gpu": {
+            "type": "string",
+            "nullable": true
+          },
+          "hardDisk": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "processor": {
+            "type": "string",
+            "nullable": true
+          },
+          "ramSize": {
+            "maximum": 500,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "screenReslution": {
+            "type": "string",
+            "nullable": true
+          },
+          "screenSize": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "osId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/TbCategory"
+          },
+          "itemType": {
+            "$ref": "#/components/schemas/TbItemType"
+          },
+          "os": {
+            "$ref": "#/components/schemas/TbO"
+          },
+          "tbItemDiscounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItemDiscount"
+            },
+            "nullable": true
+          },
+          "tbItemImages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItemImage"
+            },
+            "nullable": true
+          },
+          "tbPurchaseInvoiceItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbPurchaseInvoiceItem"
+            },
+            "nullable": true
+          },
+          "tbSalesInvoiceItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbSalesInvoiceItem"
+            },
+            "nullable": true
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbCustomer"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbItemDiscount": {
+        "type": "object",
+        "properties": {
+          "itemDiscountId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "discountPercent": {
+            "type": "number",
+            "format": "double"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "item": {
+            "$ref": "#/components/schemas/TbItem"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbItemImage": {
+        "type": "object",
+        "properties": {
+          "imageId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item": {
+            "$ref": "#/components/schemas/TbItem"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbItemType": {
+        "type": "object",
+        "properties": {
+          "itemTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "tbItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbO": {
+        "type": "object",
+        "properties": {
+          "osId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "osName": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "showInHomePage": {
+            "type": "boolean"
+          },
+          "currentState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "tbItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbPurchaseInvoice": {
+        "type": "object",
+        "properties": {
+          "invoiceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "supplierId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "supplier": {
+            "$ref": "#/components/schemas/TbSupplier"
+          },
+          "tbPurchaseInvoiceItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbPurchaseInvoiceItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbPurchaseInvoiceItem": {
+        "type": "object",
+        "properties": {
+          "invoiceItemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "qty": {
+            "type": "number",
+            "format": "double"
+          },
+          "invoicePrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice": {
+            "$ref": "#/components/schemas/TbPurchaseInvoice"
+          },
+          "item": {
+            "$ref": "#/components/schemas/TbItem"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbSalesInvoice": {
+        "type": "object",
+        "properties": {
+          "invoiceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delivryDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delivryManId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tbSalesInvoiceItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbSalesInvoiceItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbSalesInvoiceItem": {
+        "type": "object",
+        "properties": {
+          "invoiceItemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invoiceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "qty": {
+            "type": "number",
+            "format": "double"
+          },
+          "invoicePrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoice": {
+            "$ref": "#/components/schemas/TbSalesInvoice"
+          },
+          "item": {
+            "$ref": "#/components/schemas/TbItem"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbSettings": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "websiteName": {
+            "type": "string",
+            "nullable": true
+          },
+          "logo": {
+            "type": "string",
+            "nullable": true
+          },
+          "websiteDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "facebookLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "twitterLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "instgramLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "youtubeLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "middlePanner": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastPanner": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TbSupplier": {
+        "type": "object",
+        "properties": {
+          "supplierId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "supplierName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tbPurchaseInvoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TbPurchaseInvoice"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

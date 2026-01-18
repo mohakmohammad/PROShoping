@@ -1,0 +1,525 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Sheikh Electronics Store">
+    <meta name="keywords" content="laptops, electronics, Sheikh, computers">
+    <meta name="author" content="Sheikh Store">
+  
+    <title>Sheikh - Laptops & Electronics Store</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/frontend/css/shaekh.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/fontawesome.css">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/slick-theme.css">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/animate.css">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/themify-icons.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/bootstrap.css">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="~/Frontend/css/color19.css" media="screen" id="color">
+    @RenderSection("Styles", required: false);
+
+ 
+</head>
+<body>
+    <!-- loader start -->
+    <div class="loader_skeleton">
+        <header class="header-tools marketplace">
+            <div class="top-header d-none d-sm-block">
+                <div class="container-fluid custom-container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="header-contact">
+                                <ul>
+                                    <li>Welcome to Sheikh Electronics Store</li>
+                                    <li>
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        Call Us: 0799475117
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid custom-container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            <div class="menu-left">
+                                <div class="navbar">
+                                    <a href="javascript:void(0)" onclick="openNav()">
+                                        <div class="bar-style">
+                                            <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- LOGO TEXT -->
+                                <div class="brand-logo">
+                                    <a href="/Home/Index" class="sheikh-text">
+                                        SHEIKH STORE
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- loader end -->
+    <!-- header start -->
+    <header class="header-tools marketplace">
+        <div class="mobile-fix-option"></div>
+
+        <div class="top-header">
+            <div class="container-fluid custom-container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>Welcome to Sheikh Electronics Store</li>
+                                <li>
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    Call Us: 0799475117
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 text-right">
+                        <ul class="header-dropdown">
+                            <li class="mobile-wishlist">
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                            </li>
+
+                            <li class="onhover-dropdown mobile-account">
+                                <i class="fa fa-user"></i> My Account
+                                <ul class="onhover-show-div">
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        <li><a asp-controller="Order" asp-action="MyOrders">My Orders</a></li>
+                                        <li><a asp-controller="Users" asp-action="Logout">Logout</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-controller="Users" asp-action="Login">Login</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid custom-container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style">
+                                        <i class="fa fa-bars sidebar-bar"></i>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- LOGO TEXT -->
+                            <div class="brand-logo">
+                                <a href="/Home/Index" class="sheikh-text">
+                                    SHEIKH STORE
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="menu-right pull-right">
+                            <nav id="main-nav">
+                                <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                    <li><a href="/Home/Index">Home</a></li>
+                                    <li><a href="/Order/Cart">Shop</a></li>
+                                    <li><a href="/Items/ItemsList">Products</a></li>
+                                    <li><a href="/Home/Index">Pages</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+    @RenderBody()
+
+
+    <!-- footer -->
+    <footer class="footer-light">
+        <section class="section-b-space light-layout">
+            <div class="container">
+                <div class="row footer-theme partition-f">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>About Sheikh Store</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <div class="brand-logo">
+                                <span class="sheikh-text">SHEIKH STORE</span>
+                            </div>
+
+                            <p>Your trusted destination for premium laptops and electronics. We offer the latest technology with competitive prices and excellent customer service.</p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a id="lnkFacebook"  href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a id="lnkInstagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a id="lnkTwitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                                    <li><a id="lnkYoutube" href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>Store Information</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul class="contact-list">
+                                    <li><i class="fa fa-map-marker"></i>Sheikh Electronics Store, Amman, Jordan</li>
+                                    <li><i class="fa fa-phone"></i>Call Us: 0799475117</li>
+                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="mailto:info@sheikhstore.com">info@sheikhstore.com</a></li>
+                                    <li><i class="fa fa-clock-o"></i>Working Hours: 9:00 AM - 9:00 PM</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>Quick Links</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul class="contact-list">
+                                    <li><a href="/Home/Index">Home</a></li>
+                                    <li><a href="#">Shop</a></li>
+                                    <li><a href="#">New Arrivals</a></li>
+                                    <li><a href="#">Best Sellers</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="footer-end">
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2024 Sheikh Electronics Store. All rights reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="payment-card-bottom">
+                            <ul>
+                                <li>
+                                    <a href="#"><img src="~/Frontend/images/icon/visa.png" alt="Visa"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="~/Frontend/images/icon/mastercard.png" alt="Mastercard"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="~/Frontend/images/icon/paypal.png" alt="PayPal"></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="~/Frontend/images/icon/american-express.png" alt="American Express"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <!--modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal1">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="modal-bg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="offer-content">
+                                        <h2>Subscribe to Our Newsletter</h2>
+                                        <p>Get the latest updates on new products and special offers!</p>
+                                        <form action="#"
+                                              class="auth-form needs-validation" method="post"
+                                              id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                              target="_blank">
+                                            <div class="form-group mx-sm-3">
+                                                <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL"
+                                                       placeholder="Enter your email" required="required">
+                                                <button type="submit" class="btn btn-solid"
+                                                        id="mc-submit">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal popup end-->
+    <!-- Quick-view modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="quick-view-img">
+                                <img src="~/Frontend/images/pro3/1.jpg" alt=""
+                                     class="img-fluid blur-up lazyload">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 rtl-text">
+                            <div class="product-right">
+                                <h2>Dell XPS 13 Laptop</h2>
+                                <h3>$1,299.99</h3>
+                                <ul class="color-variant">
+                                    <li class="bg-light0"></li>
+                                    <li class="bg-light1"></li>
+                                    <li class="bg-light2"></li>
+                                </ul>
+                                <div class="border-product">
+                                    <h6 class="product-title">Product Details</h6>
+                                    <p>13.4-inch FHD+ Display, Intel Core i7, 16GB RAM, 512GB SSD, Windows 11 Pro</p>
+                                </div>
+                                <div class="product-description border-product">
+                                    <div class="size-box">
+                                        <ul>
+                                            <li class="active"><a href="#">8GB RAM</a></li>
+                                            <li><a href="#">16GB RAM</a></li>
+                                            <li><a href="#">32GB RAM</a></li>
+                                            <li><a href="#">512GB SSD</a></li>
+                                        </ul>
+                                    </div>
+                                    <h6 class="product-title">Quantity</h6>
+                                    <div class="qty-box">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <button type="button"
+                                                        class="btn quantity-left-minus" data-type="minus" data-field="">
+                                                    <i class="ti-angle-left"></i>
+                                                </button>
+                                            </span>
+                                            <input type="text" name="quantity" class="form-control input-number"
+                                                   value="1"> <span class="input-group-prepend">
+                                                <button type="button"
+                                                        class="btn quantity-right-plus" data-type="plus" data-field="">
+                                                    <i class="ti-angle-right"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-buttons">
+                                    <a href="#" class="btn btn-solid">Add to Cart</a>
+                                    <a href="#" class="btn btn-solid">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick-view modal popup end-->
+    <!-- theme setting -->
+    <div id="setting_box" class="setting-box">
+        <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+        <div class="setting_box_body">
+            <div onclick="closeSetting()">
+                <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Back</div>
+            </div>
+            <div class="setting-body">
+                <div class="setting-title">
+                    <h4>Layout</h4>
+                </div>
+                <div class="setting-contant">
+                    <div class="row demo-section">
+                        <!-- Demo layouts remain the same -->
+                    </div>
+                </div>
+                <div class="setting-title">
+                    <h4>Shop</h4>
+                </div>
+                <div class="setting-contant">
+                    <div class="row demo-section">
+                        <!-- Shop layouts remain the same -->
+                    </div>
+                </div>
+                <div class="setting-title">
+                    <h4>Product</h4>
+                </div>
+                <div class="setting-contant">
+                    <div class="row demo-section">
+                        <!-- Product layouts remain the same -->
+                    </div>
+                </div>
+                <div class="setting-title">
+                    <h4>Color Picker</h4>
+                </div>
+                <div class="setting-contant">
+                    <ul class="color-box">
+                        <li>
+                            <input id="ColorPicker1" type="color" value="#3e5067" name="Background">
+                            <span>Theme Default Color</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="setting-title">
+                    <h4>RTL</h4>
+                </div>
+                <div class="setting-contant">
+                    <ul class="setting_buttons">
+                        <li class="active" id="ltr_btn">
+                            <a href="javascript:void(0)" class="btn setting_btn">LTR</a>
+                        </li>
+                        <li id="rtl_btn"><a href="javascript:void(0)" class="btn setting_btn">RTL</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+    <!-- tap to top -->
+    <div class="tap-top top-cls">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+    <!-- tap to top end -->
+    <!-- latest jquery-->
+    <script src="~/Frontend/js/jquery-3.3.1.min.js"></script>
+
+    <!-- fly cart ui jquery-->
+    <script src="~/Frontend/js/jquery-ui.min.js"></script>
+
+    <!-- exitintent jquery-->
+    <script src="~/Frontend/js/jquery.exitintent.js"></script>
+    <script src="~/Frontend/js/exit.js"></script>
+
+    <!-- popper js-->
+    <script src="~/Frontend/js/popper.min.js"></script>
+
+    <!-- slick js-->
+    <script src="~/Frontend/js/slick.js"></script>
+
+    <!-- menu js-->
+    <script src="~/Frontend/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="~/Frontend/js/lazysizes.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="~/Frontend/js/bootstrap.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="~/Frontend/js/bootstrap-notify.min.js"></script>
+
+    <!-- Fly cart js-->
+    <script src="~/Frontend/js/fly-cart.js"></script>
+
+    <!-- Theme js-->
+    <script src="~/Frontend/js/script.js"></script>
+
+    <script src="~/modules/helper.js"></script>
+    <script src="~/modules/settings.js"></script>
+    @RenderSection("Scripts", required: false);
+
+ 
+
+   @*  <script>
+        $(window).on('load', function () {
+            setTimeout(function () {
+                $('#exampleModal').modal('show');
+            }, 2500);
+        });
+
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+
+        // Sheikh Store specific scripts
+        $(document).ready(function() {
+            // Update cart count
+            function updateCartCount() {
+                // Add your cart logic here
+            }
+
+            // Newsletter subscription
+            $('#mc-embedded-subscribe-form').submit(function(e) {
+                e.preventDefault();
+                var email = $('#mce-EMAIL').val();
+                if(email) {
+                    // Add subscription logic here
+                    alert('Thank you for subscribing to Sheikh Store newsletter!');
+                    $('#exampleModal').modal('hide');
+                }
+            });
+        });
+    </script>
+ *@
+ 
+ 
+
+
+ 
+</body>
+</html>

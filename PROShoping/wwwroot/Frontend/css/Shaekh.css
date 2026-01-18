@@ -1,0 +1,27 @@
+﻿.brand-logo .sheikh-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #111; /* اللون الأساسي للنص */
+    font-family: 'Cairo', 'Tajawal', Arial, sans-serif; /* خط عربي عصري */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+    /* تأثير خط أسفل النص عند التحويم */
+    .brand-logo .sheikh-text::after {
+        content: '';
+        display: block;
+        width: 30%;
+        height: 3px;
+        background: #ff4c3b; /* اللون المميز للبراند */
+        margin-top: 4px;
+        transition: width 0.3s ease;
+    }
+
+    .brand-logo .sheikh-text:hover::after {
+        width: 100%;
+    }
